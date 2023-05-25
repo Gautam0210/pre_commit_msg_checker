@@ -1,7 +1,8 @@
 #!/bin/sh
 
 MESSAGE=$(cat $1)
-COMMITFORMAT="^#([0-9]+) (feat|fix|docs|style|refactor|test|chore)(\((.*)\))?: (.*)$" 
+COMMITFORMAT="^#([0-9]+) (feat|fix|docs|style|refactor|test|chore|perf)(\([a-zA-Z]+\))?: [a-z][^\.\n]{1,98}(\n\n[a-z][^\.\n]{1,100})*(\n\n(#[A-Za-z]+.*)*)?$"
+#COMMITFORMAT="^#([0-9]+) (feat|fix|docs|style|refactor|test|chore)(\((.*)\))?: (.*)$" 
 #COMMITFORMAT="^(feat|fix|docs|style|refactor|test|chore)(\((.*)\))?: #([0-9]+) (.*)$"
 
 if ! [[ "$MESSAGE" =~ $COMMITFORMAT ]]; then
@@ -14,3 +15,4 @@ if ! [[ "$MESSAGE" =~ $COMMITFORMAT ]]; then
   echo "More details on CONTRIBUTING.md"
   exit 1
 fi
+
