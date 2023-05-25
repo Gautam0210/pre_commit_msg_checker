@@ -1,0 +1,12 @@
+#!/bin/bash
+
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+#REGEX="^(dev|release)-([0-9]+)-q([0-9]+)\.([0-9]+)\.(.+)$"
+REGEX="^(main|master)"
+
+if ! [[ $BRANCH =~ $REGEX ]]; then
+  echo "Your commit was rejected due to branching name"
+  echo "Please rename your branch with '(main|master)-YYYY-qX.X.X' syntax"
+  #echo "Please rename your branch with '(dev|release)-YYYY-qX.X.X' syntax"
+  exit 1
+fi
